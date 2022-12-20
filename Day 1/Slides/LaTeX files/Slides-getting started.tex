@@ -155,18 +155,175 @@
 \end{frame}
 
 \nologo{ % no logos except on the title page
-	\section{Key Facts}
+	\section{Why Python?}
 	\begin{frame}{Outline}
 		\tableofcontents[currentsection]
 	\end{frame}
 
-	\begin{frame}{What is the MZES Beamer Metropolis Theme?}
-		\begin{itemize}
-			 \item This theme, inspired by the MZES corporate design, is a customization of the popular \href{https://github.com/matze/mtheme}{\texttt{metropolis}} theme for Beamer
-			 \item A matching MZES Xaringan Theme is available \href{https://github.com/denis-cohen/mzes-xaringan-metropolis/}{here}
-		\end{itemize}
+	\begin{frame}{Why Python?}
+  \begin{columns}
+\begin{column}{0.5\textwidth}
+	\cemph{Python and R can do the same things, e.g., ...}
+ \begin{itemize}
+                \item Analyze data using regression and machine learning techniques
+                \item Collect data from the web, e.g., through scraping and APIs
+                \item Visualize data
+            \end{itemize}
+\end{column}
+\begin{column}{0.5\textwidth}  %%<--- here
+    \begin{center}
+      \includegraphics[scale=.3]{Day 1/Slides/LaTeX files/why-not-both.jpg} \\
+            \tiny{Created with the Imgflip \href{https://imgflip.com/memegenerator}{Meme Generator}}
+     \end{center}
+\end{column}
+\end{columns}
+  \end{frame}
+
+	\begin{frame}{Why Python?}
+	\small
+	\cemph{Python, however, is better suited when ...}
+            \begin{itemize}
+                \item Working with computer scientists
+                \item Using state-of-the-art machine learning, deep learning, natural language processing
+                \item Preparing for a data science job outside of academia
+                \item General purpose programming
+            \end{itemize}
+    \small
+	Full disclosure: If your typical workflows mainly consist of data prep and analysis using statistical methods, such as all types of regression approaches, including Bayesian statistics, and some ML and NLP, you'll probably be better-off with R.
+  \end{frame}
+
+
+\section{Practical Guide}
+	\begin{frame}{Outline}
+		\tableofcontents[currentsection]
 	\end{frame}
-	
+
+	\begin{frame}{Python}
+	\small
+	\cemph{Python ...}
+            \begin{itemize}
+                \item General purpose programming language
+                \item Three major versions, only one (Python 3) still maintained
+                \item Starting today, obvious choice is Python 3
+            \end{itemize}
+   		\begin{block}{Is python already installed?}
+			\$ python --version
+		\end{block}       
+  \end{frame}
+
+	\begin{frame}{Versioning of python and packages}
+	\small
+            \begin{itemize}
+                \item Installing the most recent stable release of python and packages is a good starting point
+                \item Sometimes, dependencies require other versions of Python and/or packages, however
+                \item Solution: Set up different \cemph{virtual environments} 
+                \begin{itemize}
+                    \item Easy to keep different versions of Python and packages
+                    \item Avoid problems with different dependencies and updates
+                    \item Can easily switch between virtual environments
+                    \item Makes sure that your code will work on collaborators' machines
+                \end{itemize}
+            \end{itemize}     
+  \end{frame}
+
+ 	\begin{frame}{Creating and maintaining virtual environments}
+	\small
+ \textbf{With \gemph{PIP} and \gemph{venv}}
+\begin{itemize}
+    \item \textbf{venv}: Should come with your python installation
+    \item Tool to set up and manage virtual environments
+\end{itemize}
+\vskip .5cm
+                \begin{block}{Create a new virtual environment using \gemph{venv}}
+                   \$ python -m venv <directory>
+		          \end{block}
+                
+                \begin{block}{Activate virtual environment}
+                   \$ source <directory>/bin/activate
+		          \end{block}
+                \begin{block}{Deactivate virtual environment}
+                   (<directory>) \$ deactivate
+		          \end{block}
+            \
+
+
+  \end{frame}
+
+  	\begin{frame}{Versioning of python and packages}
+	\small
+\textbf{With \gemph{PIP} and \gemph{venv}}
+                \begin{itemize}
+                    \item \textbf{pip}: \textbf{P}ip \textbf{I}nstalls \textbf{P}ackages
+                    \item Standard package manager for python packages
+                    \item Should come with your python installation
+                    \item Install packages within a virtual environment
+                \end{itemize}
+                \begin{block}{Install \gemph{pip}}
+                   \$ python -m ensurepip --upgrade
+		          \end{block} 
+                \begin{block}{Install packages using \gemph{pip}}
+                   \$ pip install <package name>
+		          \end{block} 
+  \end{frame}
+
+  	\begin{frame}{Versioning of python and packages}
+	\small
+                \begin{itemize}
+                    \item Sometimes, a \texttt{requirements.txt} file is provided
+                    \item Contains required packages and versions
+                \end{itemize}
+                \begin{block}{Install packages from \gemph{requirements.txt}}
+                   \$ pip install -r requirements.txt
+		          \end{block} 
+            \begin{itemize}
+                \item Note
+                \begin{itemize}
+                    \item Virtual environments are disposable folder structures
+                \item Do not put code or data into your virtual environment (folder) manually
+                \end{itemize}
+            \end{itemize}
+  \end{frame}
+
+
+
+
+
+       	\begin{frame}{Creating and maintaining virtual environments}
+\small          
+ With \gemph{conda}
+\begin{itemize}
+    \item "Package, dependency and environment management for any language"
+    \item Installation
+    \begin{itemize}
+        \item Via \cemph{Anaconda}: Python (and R) distribution, popular in data science
+        \item Via \cemph{miniconda}: Fewer packages than Anaconda
+        \item Install through \href{https://www.anaconda.com}{Anaconda} website
+    \end{itemize}
+    \begin{block}{Check if conda has been installed}
+                   \$ conda --version
+		          \end{block} 
+\end{itemize}
+  \end{frame}
+
+       	\begin{frame}{Creating and maintaining virtual environments}
+\small          
+ \gemph{Conda}
+\begin{itemize}
+    \item "Package, dependency and environment management for any language"
+    \item Installation
+    \begin{itemize}
+        \item Via \cemph{Anaconda}: python (and R) distribution, popular in data science
+        \item Via \cemph{miniconda}: Fewer packages than Anaconda
+        \item Install through \href{https://www.anaconda.com}{Anaconda} website
+    \end{itemize}
+    \begin{block}{Check if conda has been installed}
+                   \$ conda --version
+		          \end{block} 
+\end{itemize}
+
+
+  \end{frame}
+ 
 	\begin{frame}{MZES Xaringan Metropolis vs MZES Beamer Metropolis}
 	\small
 	\cemph{Similarities}
