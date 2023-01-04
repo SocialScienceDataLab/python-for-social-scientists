@@ -7,6 +7,7 @@
 \usepackage{graphics}
 \usepackage[T1]{fontenc}
 \usepackage[]{csquotes}
+\usepackage[]{url}
 
 % Bibliography (choose backend according to your preferences)
 \usepackage[authordate, natbib, useprefix=true, isbn=false,url=false, doi=false, backend=biber]{biblatex-chicago}  
@@ -155,11 +156,11 @@
 \end{frame}
 
 \nologo{ % no logos except on the title page
-	\section{Why Python?}
 	\begin{frame}{Outline}
-		\tableofcontents[currentsection]
+		\tableofcontents
 	\end{frame}
-
+\section{Why Python?}
+	
 	\begin{frame}{Why Python?}
   \begin{columns}
 \begin{column}{0.5\textwidth}
@@ -189,18 +190,14 @@
                 \item General purpose programming
             \end{itemize}
     \small
-	Full disclosure: If your typical workflows mainly consist of data prep and analysis using statistical methods, such as all types of regression approaches, including Bayesian statistics, and some ML and NLP, you'll probably be better-off with R.
+	Full disclosure: If your work is focused on statistical inference and explanation (coefficients, statistical tests, ...) and some ML and NLP, you'll probably be better-off with R. For prediction-focused ML, deep learning, NLP and heavy data science, you'll probably want to consider using python at some point.
   \end{frame}
 
 
-\section{Practical Guide}
-	\begin{frame}{Outline}
-		\tableofcontents[currentsection]
-	\end{frame}
-
+\section{Virtual Environments and Packages}
+	
 	\begin{frame}{Python}
 	\small
-	\cemph{Python ...}
             \begin{itemize}
                 \item General purpose programming language
                 \item Three major versions, only one (Python 3) still maintained
@@ -214,14 +211,14 @@
 	\begin{frame}{Versioning of python and packages}
 	\small
             \begin{itemize}
-                \item Installing the most recent stable release of python and packages is a good starting point
+                \item Installing the most recent stable release of python in your root environment and packages is a good starting point
                 \item Sometimes, dependencies require other versions of Python and/or packages, however
                 \item Solution: Set up different \cemph{virtual environments} 
                 \begin{itemize}
                     \item Easy to keep different versions of Python and packages
                     \item Avoid problems with different dependencies and updates
                     \item Can easily switch between virtual environments
-                    \item Makes sure that your code will work on collaborators' machines
+                    \item Makes it easier for your code to run on collaborators' setups
                 \end{itemize}
             \end{itemize}     
   \end{frame}
@@ -238,13 +235,16 @@
                    \$ python -m venv <directory>
 		          \end{block}
                 
-                \begin{block}{Activate virtual environment}
+               
+                 \begin{block}{Activate virtual environment (Linux/Mac)}
                    \$ source <directory>/bin/activate
+		          \end{block} \begin{block}{Activate virtual environment (Windows)}
+                   \$ <directory>/Scripts/activate
 		          \end{block}
                 \begin{block}{Deactivate virtual environment}
                    (<directory>) \$ deactivate
 		          \end{block}
-            \
+        
 
 
   \end{frame}
@@ -255,6 +255,7 @@
                 \begin{itemize}
                     \item \textbf{pip}: \textbf{P}ip \textbf{I}nstalls \textbf{P}ackages
                     \item Standard package manager for python packages
+                    \item pip3: specifically installs packages for python 3, can be ignored if you do not have python 2 on your system
                     \item Should come with your python installation
                     \item Install packages within a virtual environment
                 \end{itemize}
@@ -268,6 +269,9 @@
 
   	\begin{frame}{Versioning of python and packages}
 	\small
+                 \begin{block}{List installed packages}
+                   \$ pip list
+		          \end{block} 
                 \begin{itemize}
                     \item Sometimes, a \texttt{requirements.txt} file is provided
                     \item Contains required packages and versions
@@ -286,25 +290,6 @@
 
 
 
-
-
-       	\begin{frame}{Creating and maintaining virtual environments}
-\small          
- With \gemph{conda}
-\begin{itemize}
-    \item "Package, dependency and environment management for any language"
-    \item Installation
-    \begin{itemize}
-        \item Via \cemph{Anaconda}: Python (and R) distribution, popular in data science
-        \item Via \cemph{miniconda}: Fewer packages than Anaconda
-        \item Install through \href{https://www.anaconda.com}{Anaconda} website
-    \end{itemize}
-    \begin{block}{Check if conda has been installed}
-                   \$ conda --version
-		          \end{block} 
-\end{itemize}
-  \end{frame}
-
        	\begin{frame}{Creating and maintaining virtual environments}
 \small          
  \gemph{Conda}
@@ -312,77 +297,225 @@
     \item "Package, dependency and environment management for any language"
     \item Installation
     \begin{itemize}
-        \item Via \cemph{Anaconda}: python (and R) distribution, popular in data science
-        \item Via \cemph{miniconda}: Fewer packages than Anaconda
+        \item Via \cemph{Anaconda}: python (and R) distribution, popular in data science, many pre-installed packages, Anaconda Navigator (GUI)
+        \item Via \cemph{miniconda}: Fewer packages than Anaconda, no GUI
         \item Install through \href{https://www.anaconda.com}{Anaconda} website
     \end{itemize}
     \begin{block}{Check if conda has been installed}
                    \$ conda --version
 		          \end{block} 
 \end{itemize}
+  \end{frame}
 
+
+
+
+
+       	\begin{frame}{Creating and maintaining virtual environments}
+\small          
+ \gemph{Conda}
+ \begin{block}{Create a new virtual environment}
+                   \$ conda create --name mynewenv python=3.11
+
+		          \end{block} 
+            
+                 \begin{block}{Activate virtual environment (Linux/Mac)}
+                   \$ source activate mynewenv
+		          \end{block} \begin{block}{Activate virtual environment (Windows)}
+                   \$ activate mynewenv
+		          \end{block}
+             \begin{block}{Dectivate virtual environment (Linux/Mac)}
+                   \$ source deactivate
+		          \end{block}
+              \begin{block}{Dectivate virtual environment (Windows)}
+                   \$ deactivate
+		          \end{block}
 
   \end{frame}
+
+       	\begin{frame}{Creating and maintaining virtual environments}
+\small          
+ \begin{block}{List installed packages}
+                   \$ conda list
+
+		          \end{block} 
+            
+                 \begin{block}{Install packages (including version number)}
+                   \$ conda install <package name>=0.7.0
+		          \end{block} \begin{block}{Update packages (or a specific one)}
+                   \$ conda update [<package name>]
+		          \end{block}
+             Sometimes, a package is not available through \cemph{conda} channels. You could still install it using \cemph{pip}
+              \begin{block}{E.g., install package "lightgbm" using pip}
+                   \$ pip install lightgbm
+		          \end{block}
+
+  \end{frame}
+
+
+	
+	\section{Graphical User Interfaces and Integrated Development Environments}
+
  
-	\begin{frame}{MZES Xaringan Metropolis vs MZES Beamer Metropolis}
-	\small
-	\cemph{Similarities}
+	\begin{frame}{GUIs and IDEs}
 		\begin{itemize}
-			\item Both themes use MZES corporate colors.
-			\item Both feature title slides with full contact and social media information for multiple authors.
-			\item Both embed the MZES Logo on the first slide.
-			\item Both use the 16:9 aspect ratio (instead of 4:3), the default on most projectors and screens nowadays.
-			\item Both allow for emphases in \cemph{MZES cyan} and \gemph{MZES gold}.
+		    \item There is no one-stop shop like RStudio
+            \item However, \cemph{Anaconda} and \cemph{Anaconda Navigator} integrate many of the tools for  a Python data science environment
+            \begin{itemize}
+                \item "Anaconda is a distribution of the Python and R programming languages for scientific computing (data science, machine learning applications, large-scale data processing, predictive analytics, etc.), that aims to simplify package management and deployment. (...) Package versions in Anaconda are managed by the package management system conda" \href{https://en.wikipedia.org/wiki/Anaconda_(Python_distribution)}{Wikipedia}
+                \item "It also includes a GUI, Anaconda Navigator, as a graphical alternative to the command-line interface (CLI)."
+            \end{itemize}
 		\end{itemize}
 	\end{frame}
 
-		\begin{frame}{MZES Xaringan Metropolis vs MZES Beamer Metropolis}
-	\small
-	\cemph{Differences}
+ 	\begin{frame}{GUIs and IDEs}
+\begin{center}
+      \includegraphics[scale=.28]{Day 1/Slides/LaTeX files/Anaconda-navigator.png} \\
+     \end{center}
+	\end{frame}
+
+  	\begin{frame}{GUIs and IDEs}
+\begin{center}
+      \includegraphics[scale=.28]{Day 1/Slides/LaTeX files/Anaconda-env.png} \\
+     \end{center}
+	\end{frame}
+
+  	\begin{frame}{IDEs and Notebooks}
+\small
+Several Integrated Development Environments (IDEs), e.g., ...
+\begin{itemize}
+    \item Spyder
+    \item PyCharm
+\end{itemize}
+and web-based interactive computing environments like ...
+\begin{itemize}
+    \item Jupyter Notebook / JupyterLab
+    \item Google Colaboratory ("Colab")
+\end{itemize}
+Note: Unlike in R/RStudio, you will need to install additional packages through a terminal using pip or conda\footnote{Installation through terminal can be sidestepped when using Notebook-type applications.}
+\end{frame}
+
+\begin{frame}{Spyder}
+    \begin{center}
+      \includegraphics[scale=.28]{Day 1/Slides/LaTeX files/Spyder.png} \\
+     \end{center}
+\end{frame}
+
+\begin{frame}{Spyder}
+    \begin{center}
+      \includegraphics[scale=.28]{Day 1/Slides/LaTeX files/Spyder-2.png} \\
+     \end{center}
+\end{frame}
+
+\begin{frame}{Jupyter Notebook}
+    \small
+    \begin{itemize}
+        \item Web-based interactive computing environments
+        \item Combine markdown with code, interactive cells, lots of exporting and publishing options
+        \item Can run bash commands from within notebook using "!"
+    \end{itemize}
+    \begin{block}{Example: List installed packages using bash}
+        !pip list
+    \end{block}
+    \begin{itemize}
+        \item Magics (\% and \%\%) give additional cell functionality 
+    \end{itemize}       
+
+    \begin{block}{Example: Include HTML content in notebook}
+        \%\%HTML
+    \end{block}
+    
+\end{frame}
+
+\begin{frame}{Jupyter Notebook}
+
+   \begin{center}
+       \includegraphics[scale=0.3]{Day 1/Slides/LaTeX files/Notebook2.png}
+   \end{center}
+    
+\end{frame}
+
+\begin{frame}{Jupyter Notebook}
+
+   \begin{center}
+       \includegraphics[scale=0.3]{Day 1/Slides/LaTeX files/Notebook3.png}
+   \end{center}
+    
+\end{frame}
+
+\begin{frame}{Jupyter Notebook}
+
+   \begin{center}
+       \includegraphics[scale=0.3]{Day 1/Slides/LaTeX files/Notebook1.png}
+   \end{center}
+    
+\end{frame}
+
+\begin{frame}{Jupyter Notebook}
+
+   \begin{center}
+       \includegraphics[scale=0.3]{Day 1/Slides/LaTeX files/Notebook4.png}
+   \end{center}
+    
+\end{frame}
+
+
+\begin{frame}{Google Colaboratory}
+    \small
+    \cemph{"Colab"}
+    \begin{itemize}
+        \item Web-based interactive computing environments
+        \item Google account required
+        \item Runs on Google hardware (including free GPU use)
+        \item Powerful hardware available per premium plans
+        \item Markdown-based text cells and code cells, magic commands, bash commands through "!", R kernels available, ...
+        \item Load data from your Google Drive
+        \item Pay attention when sharing colab notebooks
+    \end{itemize}
+    
+    
+\end{frame}
+
+ 	\section{Alternatives}
+\begin{frame}{Reticulate}
+    \begin{itemize}
+        \item An R package that allows you to run Python code in R
+        \item Requires miniconda or Anaconda installation
+        \item Management of virtual environments and packages through conda
+        \item Pro: Allows you to switch between R and Python code and access objects created in Python (e.g., data) in R
+        \item Con: Environments and packages need to be managed through conda, troubleshooting can be more difficult
+    \end{itemize}
+\end{frame}
+
+	\begin{frame}{rpy2}
+  \begin{columns}
+\begin{column}{0.5\textwidth}
+    \begin{itemize}
+        \item A Python library that allows you to run R code in Python
+        \item You have to ‘translate’ R functions to call them from Python
+        \item Alternatively, write and evaluate R code using \gemph{rmagic} in Jupyter Notebook (based on \textit{rpy2})
+    \end{itemize}
+\end{column}
+\begin{column}{0.5\textwidth}  %%<--- here
+    \begin{center}
+      \includegraphics[scale=.28]{Day 1/Slides/LaTeX files/rpy2.png} 
+     \end{center}
+\end{column}
+\end{columns}
+  \end{frame}
+
+
+ 	\section{Additional Resources}
+	\begin{frame}{Some Helpful Resources}
 		\begin{itemize}
-			\item Beamer produces static PDF slides, Xaringan produces dynamic, interactive HTML5 slides.
-			\item Beamer slides are written in LaTeX, Xaringan slides are written in RMarkdown.
-			\item Unlike Beamer, Xaringan allows for R code to be evaluated while knitting the code and for (interactive) R output to be directly embedded in the presentation.
-			\item Unlike the Beamer Theme, the Xaringan Theme does not support a permanent footer.
-			\item Unlike the Beamer Theme, the Xaringan Theme does not support progress bars on section title slides. Progress bars are only displayed underneath the slide title.
-			\item The Xaringan Theme does not support the Beamer Theme's custom blocks, though equivalent classes can be defined in \texttt{mtheme.css}.
-			\item The Xaringan Theme does not support the Beamer Theme's optional custom citation commands.
-			\item Whereas Beamer directly supports BibTeX references, Xaringan requires a little \href{https://github.com/yihui/xaringan/wiki/Bibliography-and-citations}{work-around} using the R package \href{https://cran.r-project.org/web/packages/RefManageR/index.html}{\texttt{RefManageR}}.
+		    \item \href{https://www.freecodecamp.org/news/why-you-need-python-environments-and-how-to-manage-them-with-conda-85f155f4353c}{Virtual environments and managing them with conda}
+            \item \href{https://www.youtube.com/watch?v=HW29067qVWk}{Jupyter Notebook tutorial}
+            \item \href{https://www.youtube.com/watch?v=U3ByGh8RmSc}{reticulate}
+            \item \href{https://rpy2.github.io/doc/latest/html/introduction.html}{rpy2}
+            \item \href{https://datacamp.com}{Datacamp}
 		\end{itemize}
 	\end{frame}
 	
-	\section{Cool Features}
-	\begin{frame}{A Sample Slide}
-		A sample list:
-		\begin{itemize}
-			\item \textcolor{mzesgold}{emphasis 1}
-			\item \textcolor{mzescyan}{emphasis 2}
-			\item \textcolor{mzesdarkgold}{emphasis 3}
-		\end{itemize}
-	\end{frame}
 	
-	\begin{frame}{Some Sample Blocks}
-		\begin{block}{Remark}
-			Sample text
-		\end{block}
-		
-		\begin{alertblock}{Important theorem}
-			Sample text
-		\end{alertblock}
-	\end{frame}
-	
-%	\begin{frame}{Some Custom Referencing Styles}
-%	Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.\cpsh{Downs1957c} 
-	
-%	Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.\cpsl{Stokes1963} 
-	
-%	Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.\cpshl[e.g. ]{KKV, Greene2003, Greene2012}{Wooldridge2002, Gelman2007} 
-	
-%	\end{frame}
-	
-	\section{Bibliography}
-	\begin{frame}[allowframebreaks]{Bibliography}
-	\printbibliography[heading=none]
-	\end{frame}
-}
+	}
 \end{document}
