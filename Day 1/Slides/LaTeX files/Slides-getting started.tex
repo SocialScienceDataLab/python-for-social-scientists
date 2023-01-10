@@ -468,10 +468,22 @@ Note: Unlike in R/RStudio, you will need to install additional packages through 
         \item Google account required
         \item Runs on Google hardware (including free GPU use)
         \item Powerful hardware available per premium plans
-        \item Markdown-based text cells and code cells, magic commands, bash commands through "!", R kernels available, ...
+        \item Markdown-based text cells and code cells, magic commands, bash commands ("!"), R kernels available, \LaTeX, ...
         \item Load data from your Google Drive
         \item Pay attention when sharing colab notebooks
     \end{itemize}
+    
+    
+\end{frame}
+
+\begin{frame}{Google Colaboratory}
+    \small
+    \cemph{"Colab"} -- Downsides
+    \begin{itemize}
+        \item Lose data and results when runtime stops
+        \item Uploaded files removed when session restarted, no persistent storage 
+        \item Sensitive data?
+        \end{itemize}
     
     
 \end{frame}
@@ -503,6 +515,79 @@ Note: Unlike in R/RStudio, you will need to install additional packages through 
 \end{column}
 \end{columns}
   \end{frame}
+
+\section{Further notes}
+\begin{frame}{Naming conventions}
+    \begin{itemize}
+        \item A name can only consist of characters from three groups: digits (0-9), letters (a-z and A-Z), and underscores (\_)
+        \item A name cannot start with a digit
+        \item A name cannot coincide with one of Python’s reserved words, which have special meaning to Python, e.g., ...
+        \begin{itemize}
+            \item False, class, finally, is, return, None, continue, while, del, else, ...
+        \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}{Indentation}
+  \begin{columns}
+\begin{column}{0.5\textwidth}
+    \begin{itemize}
+        \item Indentation: spaces at the beginning of a code line
+        \item E.g., in R, indentation is for readability only, in Python it is very important
+        \item Python uses indentation to indicate a block of code
+        \item Number of spaces is up to you, but it has to be at least one and consistent
+    \end{itemize}
+\end{column}
+\begin{column}{0.5\textwidth}  %%<--- here
+    \begin{center}
+      \includegraphics[scale=.28]{Day 1/Slides/LaTeX files/indentation_1.png}
+      \vskip 1cm
+      \includegraphics[scale=.28]{Day 1/Slides/LaTeX files/indentation_2.png}
+     \end{center}
+\end{column}
+\end{columns}
+    
+\end{frame}
+
+\begin{frame}{Importing and Using Packages}
+  \begin{columns}
+\begin{column}{0.5\textwidth}
+    \begin{itemize}
+        \item Depending on how you import a package, you will need to reference it when using a function
+        \item Usually a good idea to use alternate names (e.g., pandas -> pd, numpy -> np)
+        \item Can import submodules instead of whole packages
+    \end{itemize}
+\end{column}
+\begin{column}{0.5\textwidth}  %%<--- here
+    \begin{center}
+      \includegraphics[scale=.28]{Day 1/Slides/LaTeX files/import_1.png}
+      \vskip .5cm
+      \includegraphics[scale=.28]{Day 1/Slides/LaTeX files/import_2.png}
+      
+     \end{center}
+\end{column}
+\end{columns}
+    
+\end{frame}
+
+
+\begin{frame}{Importing and Using Packages}
+  \begin{columns}
+\begin{column}{0.5\textwidth}
+    \begin{itemize}
+        \item Depending on how you import a package, you will need to reference it when using a function
+        \item Usually a good idea to use alternate names (e.g., pandas -> pd, numpy -> np)
+        \item Can import elements of a package instead of whole packages
+    \end{itemize}
+\end{column}
+\begin{column}{0.5\textwidth}  %%<--- here
+    \begin{center}
+      \includegraphics[scale=.28]{Day 1/Slides/LaTeX files/import_3.png}      
+     \end{center}
+\end{column}
+\end{columns}
+    
+\end{frame}
 
 
  	\section{Additional Resources}
